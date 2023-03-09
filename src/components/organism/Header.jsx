@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, Image } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import React, { useEffect } from 'react'
 import { StatusBar } from 'expo-status-bar'
@@ -44,7 +44,10 @@ export default function Header() {
         </View>  
 
         <View style={styles.weather}>
-            <Text style={styles.weatherHeader}>{weather[0].main}</Text>
+            <View style={styles.weatherHeaderContainer}>
+              <Text style={styles.weatherHeader}>{weather[0].main}</Text>
+              <Image style={styles.weatherImage} source={{uri: `https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`}}/>
+            </View>
             <Text style={styles.weatherText}>{weather[0].description}</Text>
           </View>
       </LinearGradient>
@@ -66,7 +69,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   header:{
-    height: 200,
+    height: 220,
   },
   headerText:{
     color: '#fff',
@@ -91,17 +94,28 @@ const styles = StyleSheet.create({
     width: 'auto',
   },
   weather:{
-
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   weatherHeader:{
     textAlign: 'center',
     color: '#fff',
-    fontSize: 16,
+    fontSize: 24,
     fontWeight: 'bold',
   },
   weatherText:{
     textAlign: 'center',
     color: '#fff',
+    fontSize: 16,
+  },
+  weatherImage:{
+    width: 20,
+    height: 20,
+  },
+  weatherHeaderContainer:{
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   }
 
 })

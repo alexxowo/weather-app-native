@@ -42,6 +42,7 @@ export const WeatherProvider = ({ children }) => {
   }
 
   useEffect(() => {
+
     getLocationAsync()
   }, [])
 
